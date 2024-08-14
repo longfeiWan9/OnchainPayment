@@ -8,18 +8,20 @@ import paymentContract from "../contracts/PaymentContract.json";
 import { erc20Abi } from "../contracts/erc20_abi";
 import { ethers } from "ethers";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import LoadingBar from "../LoadingBar";
 
 const PAYMENT_CONTRACT_ADDRESS = "0x12191e7F6D1CA2Ebb25b04B178F4EF0479CEb5F0";
 const WFIL_CONTRACT_ADDRESS = "0xaC26a4Ab9cF2A8c5DBaB6fb4351ec0F4b07356c4";
 const abi = paymentContract.abi;
 
 export function PayToken() {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState("1.25");
   const [isApproveConfirmed, setIsApproveConfirmed] = useState(false);
   const [isPaymentConfirmed, setIsPaymentConfirmed] = useState(false);
   const [isPaymentSent, setIsPaymentSent] = useState(false);
   const { isConnected, address: payerAddress } = useAccount();
   const { data: hash, writeContract } = useWriteContract();
+  const [progress, setProgress] = useState(0);
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({ hash });
@@ -27,6 +29,7 @@ export function PayToken() {
   const handlePayment = async () => {
     setIsApproveConfirmed(false);
     setIsPaymentConfirmed(false);
+    setProgress(0);
     writeContract({
       address: WFIL_CONTRACT_ADDRESS,
       abi: erc20Abi,
@@ -36,6 +39,9 @@ export function PayToken() {
   };
 
   useEffect(() => {
+    if (isConfirming) {
+      setProgress(50);
+    }
     if (isConfirmed) {
       if (!isApproveConfirmed) {
         setIsApproveConfirmed(isConfirmed);
@@ -51,6 +57,7 @@ export function PayToken() {
         }
       } else if (!isPaymentConfirmed) {
         setIsPaymentConfirmed(isConfirmed);
+        setProgress(100);
       }
     }
   }, [isConfirming, isConfirmed]);
@@ -274,6 +281,7 @@ export function PayToken() {
         {isConfirming && <div>Waiting for confirmation...</div>}
         {isApproveConfirmed && <div>Approve is confirmed...</div>}
         {isPaymentConfirmed && <div>Payment is received...</div>}
+        {progress > 0 && <LoadingBar progress={progress} />}
       </div>
     );
   }

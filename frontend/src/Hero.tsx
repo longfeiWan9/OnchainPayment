@@ -13,8 +13,15 @@ const Hero = () => {
   const { isConnected } = useAccount();
   const [activeTab, setActiveTab] = useState<Tab>("token");
   return (
-    <div className="container1">
-      {!isConnected && <div className="title">OnChain Payment</div>}
+    <div className="heroContainer">
+      {!isConnected && (
+        <div>
+          <div className="title">OnChain Payment</div>
+          <div className="connectHero">
+            <ConnectButton />
+          </div>
+        </div>
+      )}
       {isConnected && (
         <>
           <div className="tabs flex">

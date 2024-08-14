@@ -14,7 +14,6 @@ const Navbar = () => {
         <div className="connectButton">
           <ConnectButton />
         </div>
-        
       </div>
     </div>
   );

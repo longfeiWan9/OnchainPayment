@@ -5,8 +5,8 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="container">
-      <div className="p">Made with ❤️ by FIL-Builder</div>
+    <div className="footerContainer">
+      <div className="footerParagraph">Made with ❤️ by FIL-Builder</div>
       <div className="icons">
         <FaXTwitter className="icon xIcon" />
         <FaInstagram className="icon instagramIcon" />

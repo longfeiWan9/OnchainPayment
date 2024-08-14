@@ -10,6 +10,7 @@ import paymentContract from "../contracts/PaymentContract.json";
 import { parseEther } from "viem";
 import { ethers } from "ethers";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import LoadingBar from "../LoadingBar";
 
 const PAYMENT_CONTRACT_ADDRESS = "0x12191e7F6D1CA2Ebb25b04B178F4EF0479CEb5F0";
 const abi = paymentContract.abi;
