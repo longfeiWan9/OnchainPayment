@@ -1,30 +1,58 @@
 .heroContainer {
-    background-color: white;
-    height: 76vh;
+    background-color: #FFE05F;
+    margin: 40px;
+    height: 64vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 24px;
+    box-shadow: 0px 12px 18px rgba(0, 0, 0, 1);
 
-    @media (max-width: 768px) {
-        height: 90vh;
+    @media (max-width: 1050px) {
+        margin: 24px;
     }
 }
 
-.title {
-  font-size: 8rem;
-  font-weight: 700;
-  color: #000;
+.heroTitle {
+  font-size: 88px;
+  font-family: "Balgin Black", sans-serif;
+  font-weight: normal;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #FA4747;
+  text-shadow: 6px 12px 0px rgba(0, 0, 0, 1);
   
   @media (max-width: 768px) {
-    font-size: 4rem;
+    font-size: 24px;
   }
 }
 
 .connectHero {
-    margin-top: 12px;
-    display: flex;
-    justify-content: center;
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.connectButton {
+  font-family: "Quicksand Regular", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 12px;
+  color: #000000;
+  background-color: #FA4747;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 6px 0px rgba(0, 0, 0, 1);
+  border: 2px solid #000000;
+
+  transition: all .2s ease;
+
+  &:active {
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    transform: translateY(3px);
+  }
 }
 
 .subtitle {
@@ -61,11 +89,15 @@
     font-size: 20px;
     border: none;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
   }
   
   .tabs button.bg-blue-500 {
-    background-color: #4FD1C58F;
-    color: #2C5282;
+    background-color: #FA4747;
+    color: #FFFFFF;
     font-weight: 600;
   }
   

@@ -16,9 +16,13 @@ const Hero = () => {
     <div className="heroContainer">
       {!isConnected && (
         <div>
-          <div className="title">OnChain Payment</div>
+          <h1 className="heroTitle">OnChain Payment</h1>
           <div className="connectHero">
-            <ConnectButton />
+            <ConnectButton.Custom>
+              {({ openConnectModal }) => (
+                <button className="connectButton" onClick={openConnectModal}>Connect Wallet</button>
+              )}
+            </ConnectButton.Custom>
           </div>
         </div>
       )}

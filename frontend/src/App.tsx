@@ -6,11 +6,11 @@ import Hero from "./Hero";
 
 const App = () => {
   return (
-    <>
+    <div>
       <Navbar />
       <Hero />
       <Footer />
-    </>
+    </div>
   );
 };
 

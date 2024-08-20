@@ -1,19 +1,36 @@
 import "./Navbar.css";
-import logo from "./logo.jpg";
+import Logo from "./components/svg/Logo"
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
-import { PayToken } from "./components/payToken";
-import { Withdraw } from "./components/withdraw";
-import { FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
   return (
     <div className="container">
-      <img src={logo} alt="logo" className="logo" />
+      <Logo className="logo" />
       <div className="main">
-        <div className="connectButton">
-          <ConnectButton />
-        </div>
+        <ConnectButton.Custom>
+          {({ account, chain, openConnectModal, openAccountModal }) => {
+            const connected = account && chain;
+            return (
+              <div>
+                {connected ? (
+                  <div className="connectedContainer">
+                    <button
+                      className="connectButton"
+                      onClick={openAccountModal}
+                    >
+                      Disconnect
+                    </button>
+                  </div>
+                ) : (
+                  <button className="connectButton" onClick={openConnectModal}>
+                    Connect Wallet
+                  </button>
+                )}
+              </div>
+            );
+          }}
+        </ConnectButton.Custom>
       </div>
     </div>
   );
