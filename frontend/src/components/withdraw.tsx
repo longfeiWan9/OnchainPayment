@@ -59,7 +59,7 @@ export function Withdraw() {
                 <h2 >ADMIN Page </h2>
                 <h3 >Withdraw received wFIL</h3>
                 <p>
-                    <div>Contract Balance: {ethers.formatEther(balance?.toString()!)} wFIL</div> 
+                    <div>Contract Balance: {ethers.formatUnits(balance?.toString()!,18)} wFIL</div> 
                 </p>
                 <input
                     type="text"
